@@ -6,7 +6,7 @@ export async function up(knex: Knex): Promise<void> {
     table.string('session_id').notNullable().unique() // cria coluna para armazenar identificação / valor obrigatório / único sem duplicata
     table.string('name').notNullable()
     table.string('email').notNullable().unique()
-    table.timestamps(true, true).notNullable()
+    table.timestamps(true, true)
   })
 }
 
