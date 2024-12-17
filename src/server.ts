@@ -1,17 +1,18 @@
 import fastify from 'fastify'
 import { knex } from './database'
+import { env } from './env'
 
 const app = fastify()
 
 app.get('/hello', async () => {
-  const tables = await knex('sqlite_schema').select('*')
+  const user = await knex('users').where('name', 'Diego Doeh').select('*')
 
-  return tables
+  return user
 })
 
 app
   .listen({
-    port: 3334,
+    port: env.PORT,
   })
   .then(() => {
     console.log('HTTP SERVER RUNNING')
